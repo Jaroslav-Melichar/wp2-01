@@ -1,28 +1,54 @@
+<?php 
+$amount = filter_input(INPUT_POST, 'amount');
+$final = 0 ;
+define('EUR_CZK', 25);
+$sub = filter_input(INPUT_POST, 'odeslat');
+$switch =  filter_input(INPUT_POST, 'switch');
+$curencyfrom;
+$curencyto;
+$text = "Převod je hotov : " ;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-<h1>Převod peněz</h1>
-
-<form action="index.php" method="post" > 
-
-Částka :
-<input type="number" value> <br>
-<h2> Převod : </h2> 
-<input type="radio" id="eur_czk" name="prachy" value="eur_czk">
-<label for="eur_czk">EUR na CZK</label><br>
-<input type="radio" id="czk_eur" name="prachy" value="czk_eur">
-<label for="czk_eur">CZK na EUR</label>
+<h1>Směnárna</h1>
 <br>
-<br>
-<input type="submit" value="Převést" name="submit" >
-</form>
+<?php
+if (isset($sub)) {
+
+    switch ($switch) {
+    case 'czk_eur': 
+        $final = $amount / EUR_CZK ;
+        $curencyfrom = " CZK " ;
+        $curencyto = " EUR " ;
+        break;
+    case 'eur_czk': 
+        $final = $amount * EUR_CZK ;
+        $curencyfrom = " EUR " ;
+        $curencyto = " CZK " ;
+        break;
+                    }
+
+        $all =$text . $amount . $curencyfrom . " = " . $final . $curencyto ?>
+<?= $all ?>
+<?php
+} else { ?>
+    <form action="index.php" method="post">
+Peníze: <input type="text" name="amount" id="amount"> <br>
+     <br>
+        CZK to EUR: <input type="radio" name="switch" value="czk_eur" id="switch"><br>
+        EUR to CZK: <input type="radio" name="switch" value="eur_czk" id="switch"><br>
+        <br>
+        <input type="submit" value="odeslat" name="odeslat">
+    </form>
+<?php
+} ?>
 
 </body>
 </html>
-
