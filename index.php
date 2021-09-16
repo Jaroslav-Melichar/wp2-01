@@ -13,12 +13,31 @@
 
 Částka :
 <input type="number" value> <br>
-
 <h2> Převod : </h2> 
 <input type="radio" id="eur_czk" name="prachy" value="eur_czk">
 <label for="eur_czk">EUR na CZK</label><br>
 <input type="radio" id="czk_eur" name="prachy" value="czk_eur">
 <label for="czk_eur">CZK na EUR</label>
+
+<?php
+$submit = filter_input(INPUT_POST,'submit');
+//$amount = //;
+$type = 
+
+if(isset($submit)) {
+    // proved konverzaci
+
+if()
+} else {
+    //vypiš formulář 
+}
+
+
+
+
+?>
+
+
 <br>
 <br>
 <input type="submit" value="Převést" name="submit" >
@@ -26,3 +45,4 @@
 
 </body>
 </html>
+
