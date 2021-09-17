@@ -40,7 +40,7 @@ if (isset($sub)) {
 <?php
 } else { ?>
     <form action="index.php" method="post">
-Peníze: <input type="text" name="amount" id="amount"> <br>
+Peníze: <input type="number" name="amount" id="amount"> <br>
      <br>
         CZK to EUR: <input type="radio" name="switch" value="czk_eur" id="switch"><br>
         EUR to CZK: <input type="radio" name="switch" value="eur_czk" id="switch"><br>
